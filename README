@@ -32,4 +32,5 @@ ks.to_regex(regex, ks)
 	Takes exactly 2 arguments: the regular expression as a string and the ks as a float.
 	Accessed through pyks.ks.to_regex(regex,ks)
 	
-	
+***INSTALLATION***
+Run the binary appropriate to your distribution or run the command: "setup.py install"
