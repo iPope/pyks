@@ -3,10 +3,10 @@
 from distutils.core import setup
 
 setup(name='Pyks',
-      version='0.0.7a',
+      version='1.0.0',
       description='Python kilo-seconds manipulation module',
       author='Callum Booth',
       author_email='callumwbooth@gmail.com',
 	  url='https://github.com/cbooth/pyks',
-      packages=['pyks'],
+      package=['pyks']
      )
