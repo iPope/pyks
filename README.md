@@ -1,16 +1,18 @@
 Python Kiloseconds Manipulation Module
+=============
 Created by Callum Booth and licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
 Based on the original concept and code from bavardage on GitHub: https://github.com/bavardage/Kiloseconds.git
 
-***USAGE***
+Usage
+-------
 
-STANDALONE:
+### Standalone:
 Returns the current time and the time in kiloseconds in the following format:
 
 "The current time is: HH:MM:SS
 In kiloseconds, this is: xx.xxx ks"
 
-IMPORTED:
+### Imported:
 The following functions can be accessed when imported:
 
 get_current_ks()
@@ -29,11 +31,13 @@ format_ks(ks, format_ks)
 	Returns as string.
 	Takes exactly 2 arguments: the format_ks as a string and the ks as a float.
 	
-***INSTALLATION***
+Installation
+-------
 
 Run the command: "setup.py install"
 
-***VALID ARGUMENT STRUCTURE FOR format_ks().format_ks***
+Valid argument structure for format_ks().format_ks
+-------
 
 The format_ks argument should be structured using these parts:
 
