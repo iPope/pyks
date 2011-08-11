@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env python
+#!/usr/bin/env python
 
 """Python Kiloseconds Manipulation Module
 Version: 1.0.0
@@ -17,33 +17,43 @@ class PyksInternalError(Exception):
         def __str__(self):
                 return repr(self.parameter)
 
-def this_ks():
+def get_current_ks():
         """Returns the current time in Kiloseconds."""
-        tm = time.localtime()
-        s_hour = float(tm.tm_hour) * 3600
-        s_min = float(tm.tm_min) * 60
-        sec = float(tm.tm_sec)
-        kstime = (s_hour + s_min + sec) / 1000.0
-        return kstime
+        
+        local_time = time.localtime()
+        s_hour = float(local_time.tm_hour) * 3600
+        s_min = float(local_time.tm_min) * 60
+        sec = float(local_time.tm_sec)
+        kilo_time = (s_hour + s_min + sec) / 1000.0
+        
+        return kilo_time
 
-def from_ks(ks):
+def ks_to_human(kilosecond):
         """Returns the ks in a human-readable HH:MM:SS format."""
-        sec = int(ks * 1000)
-        fromks = time.strftime('%H:%M:%S', time.gmtime(sec))
-        return fromks
+        
+        sec = int(kilosecond * 1000)
+        human_readable = time.strftime('%H:%M:%S', time.gmtime(sec))
+        
+        return human_readable
 
-def format_ks(ks, __format):
+def format_ks(ks, format_ks):
         """Returns the ks value formatted to a specific string."""
+        
+        sec = int(ks * 1000)
+
         try:
-                sec = int(ks * 1000)
-                newstring = time.strftime(__format, time.gmtime(sec))
-                return newstring
-        except Exception as ex:
-                raise PyksInternalError(ex)
+                formatted_string = time.strftime(format_ks, time.gmtime(sec))
+        except OverflowError as ex:
+                print ex
+        
+        return formatted_string
+        
 
 if __name__ == '__main__':
-        tm = time.localtime()
-        print('The current time is:', time.strftime('%H:%M:%S',tm))
-        print('In kiloseconds, this is: {0}{1}'.format(this_ks(), 'ks'))
+        local_time = time.localtime()
+        print('The current time is:', time.strftime('%H:%M:%S',local_time))
+        print('In kiloseconds, this is: {0}{1}'.format(get_current_ks(), 'ks'))
+
+        format_ks(get_current_ks(), "%H:%M:%S")
 else:
         pass
