@@ -10,13 +10,6 @@ Based on the Python code from: https://github.com/bavardage/Kiloseconds
 
 import time
 
-class PyksInternalError(Exception):
-        """Base class for errors in pyks."""
-        def __init__(self, value):
-                self.parameter = value
-        def __str__(self):
-                return repr(self.parameter)
-
 def get_current_ks():
         """Returns the current time in Kiloseconds."""
         
