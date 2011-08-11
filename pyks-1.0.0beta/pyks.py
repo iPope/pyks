@@ -22,8 +22,14 @@ def time_to_ks(local_time):
         s_min = float(local_time.tm_min) * 60
         sec = float(local_time.tm_sec)
         kilo_time = (s_hour + s_min + sec) / 1000.0
-        
+
         return kilo_time
+def get_current_ks():
+        """Returns the current time in Kiloseconds."""
+        
+        local_time = time.localtime()
+
+        return time_to_ks(local_time)
 
 def get_current_ks():
         """Returns the current time in Kiloseconds."""

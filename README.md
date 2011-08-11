@@ -1,45 +1,45 @@
 Python Kiloseconds Manipulation Module
+=============
 Created by Callum Booth and licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
 Based on the original concept and code from bavardage on GitHub: https://github.com/bavardage/Kiloseconds.git
 
-***USAGE***
+Usage
+-------
 
-STANDALONE:
+### Standalone:
 Returns the current time and the time in kiloseconds in the following format:
 
 "The current time is: HH:MM:SS
 In kiloseconds, this is: xx.xxx ks"
 
-IMPORTED:
+### Imported:
 The following functions can be accessed when imported:
 
-this_ks()
+get_current_ks()
 	Returns the current kilosecond time as a float integer.
 	Takes no arguments.
 	
-from_ks(ks)
+ks_to_human(ks)
 	Converts a kilosceond time back into a human-readable HH:MM:SS time string.
-	The same effect can be acheived using ks.to_regex(), using '%H:%M:%S' as the regex.
+	The same effect can be acheived using format_ks(), using '%H:%M:%S' as the format_ks argument
 	Returns as string.
-	Takes exactly one argument: the ks to convert as a float integer.
+	Takes exactly one argument: the kilosecond to convert as a float integer.
 	
-format_ks(ks, __format)
+format_ks(ks, format_ks)
 	Formats the given kiloseconds value using the given regular expression.
-    __format must be similar to: '%H:%M:%S' Each part represents the hour, minute or second and each can be ommitted as appropriate, as long as it is similar to this string.
+    format_ks must be similar to: '%H:%M:%S' Each part represents the hour, minute or second and each can be ommitted as appropriate, as long as it is similar to this string.
 	Returns as string.
-	Takes exactly 2 arguments: the __format as a string and the ks as a float.
+	Takes exactly 2 arguments: the format_ks as a string and the ks as a float.
 	
-***INSTALLATION***
+Installation
+-------
 
 Run the command: "setup.py install"
 
-***EXCEPTIONS***
+Valid argument structure for format_ks().format_ks
+-------
 
-format_ks() may raise an exception if the __format argument is invalid, valid strings are listed below. If an exception is raised, a PyksInternalError will be raised detailing the problem, allowing the caller to handle the exception in their own way.
-
-***VALID ARGUMENT STRUCTURE FOR format_ks().__format***
-
-The __format argument should be structured using these parts:
+The format_ks argument should be structured using these parts:
 
 %H : Corresponds to the hour section of HH:MM:SS
 %M : Corresponds to minutes
