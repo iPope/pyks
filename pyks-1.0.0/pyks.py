@@ -17,16 +17,19 @@ class PyksInternalError(Exception):
         def __str__(self):
                 return repr(self.parameter)
 
-def get_current_ks():
-        """Returns the current time in Kiloseconds."""
-        
-        local_time = time.localtime()
+def time_to_ks(local_time):
         s_hour = float(local_time.tm_hour) * 3600
         s_min = float(local_time.tm_min) * 60
         sec = float(local_time.tm_sec)
         kilo_time = (s_hour + s_min + sec) / 1000.0
         
         return kilo_time
+
+def get_current_ks():
+        """Returns the current time in Kiloseconds."""
+
+        return time_to_ks(time.localtime())
+
 
 def ks_to_human(kilosecond):
         """Returns the ks in a human-readable HH:MM:SS format."""
@@ -38,15 +41,16 @@ def ks_to_human(kilosecond):
 
 def format_ks(ks, format_ks):
         """Returns the ks value formatted to a specific string."""
-        
-        sec = int(ks * 1000)
+
+        sec = int(int(ks) * 1000)
 
         try:
                 formatted_string = time.strftime(format_ks, time.gmtime(sec))
         except OverflowError as ex:
-                print ex
+                raise
         
         return formatted_string
+
         
 
 if __name__ == '__main__':
@@ -54,6 +58,5 @@ if __name__ == '__main__':
         print('The current time is:', time.strftime('%H:%M:%S',local_time))
         print('In kiloseconds, this is: {0}{1}'.format(get_current_ks(), 'ks'))
 
-        format_ks(get_current_ks(), "%H:%M:%S")
 else:
         pass
